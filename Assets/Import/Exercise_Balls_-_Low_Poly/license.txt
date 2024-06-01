@@ -1,0 +1,11 @@
+Model Information:
+* title:	Exercise Balls - Low Poly
+* source:	https://sketchfab.com/3d-models/exercise-balls-low-poly-c860c24b80624ef3848709b7ab3ca5d0
+* author:	MHKstudio (https://sketchfab.com/mhkstudio)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Exercise Balls - Low Poly" (https://sketchfab.com/3d-models/exercise-balls-low-poly-c860c24b80624ef3848709b7ab3ca5d0) by MHKstudio (https://sketchfab.com/mhkstudio) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
