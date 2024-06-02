@@ -11,7 +11,7 @@ public class BouncingBoy : MonoBehaviour
     private const float bounceFactor = 10;
     private const float diveSpeed = -20;
     private const float playerGlideThreshold = -.5f; // if the player's downward velocity is stronger than this, then they may glide
-    private const float glideGravityOffset = 0.9f; // higher number = stronger glide effect
+    private const float glideGravityOffset = 0.8f; // higher number = stronger glide effect
 
     // horizontal movement
     private const float strafeAccelSpeed = 180;
