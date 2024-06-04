@@ -293,6 +293,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &677261246
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2389442375947896328, guid: 997b380d072695148a1e3c90ab3ff592, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389442375947896328, guid: 997b380d072695148a1e3c90ab3ff592, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.4985101
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389442375947896328, guid: 997b380d072695148a1e3c90ab3ff592, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.348181
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389442375947896328, guid: 997b380d072695148a1e3c90ab3ff592, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389442375947896328, guid: 997b380d072695148a1e3c90ab3ff592, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389442375947896328, guid: 997b380d072695148a1e3c90ab3ff592, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389442375947896328, guid: 997b380d072695148a1e3c90ab3ff592, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389442375947896328, guid: 997b380d072695148a1e3c90ab3ff592, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389442375947896328, guid: 997b380d072695148a1e3c90ab3ff592, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389442375947896328, guid: 997b380d072695148a1e3c90ab3ff592, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537927625605148464, guid: 997b380d072695148a1e3c90ab3ff592, type: 3}
+      propertyPath: m_Name
+      value: Trampoline
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 997b380d072695148a1e3c90ab3ff592, type: 3}
 --- !u!1 &763436969
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,6 +485,7 @@ GameObject:
   - component: {fileID: 832176878}
   - component: {fileID: 832176879}
   - component: {fileID: 832176880}
+  - component: {fileID: 832176881}
   m_Layer: 0
   m_Name: PlayerSphere
   m_TagString: Untagged
@@ -562,6 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisionSound: {fileID: 8300000, guid: 0f1d817bc1283844e9a876321b6cfa5d, type: 3}
+  trampolineSound: {fileID: 8300000, guid: 7a8d0c9f97777e645a5582e91238b8cd, type: 3}
 --- !u!82 &832176879
 AudioSource:
   m_ObjectHideFlags: 0
@@ -672,6 +731,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetHeight: 10
   rb: {fileID: 0}
+  coll: {fileID: 0}
+  isPropelling: 0
+--- !u!114 &832176881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832176872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56ce4e9b70c661f47a1fccf88916e48d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bufferedFallSpeed: 2
 --- !u!1 &1036958649
 GameObject:
   m_ObjectHideFlags: 0
@@ -5874,8 +5948,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d5a6354d372ae4cb76cb020764ad34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetY: 10
   duration: 2
+  downDuration: 0.4
 --- !u!1 &2009163011
 GameObject:
   m_ObjectHideFlags: 0
@@ -5938,3 +6012,4 @@ SceneRoots:
   - {fileID: 763436973}
   - {fileID: 223285563}
   - {fileID: 322132803}
+  - {fileID: 677261246}

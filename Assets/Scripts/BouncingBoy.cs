@@ -20,7 +20,8 @@ public class BouncingBoy : MonoBehaviour
 
     private Rigidbody rb;
     private Vector3 targetVelocity;
-    public AudioClip collisionSound; 
+    public AudioClip collisionSound;
+    public AudioClip trampolineSound;
     private AudioSource audioSource;
     private ParticleSystem particles;
 
@@ -118,7 +119,7 @@ public class BouncingBoy : MonoBehaviour
         if (col.gameObject.tag == "trampoline")
         {
             GameManager.Instance.TrampolineHit();
-            audioSource.PlayOneShot(collisionSound);
+            audioSource.PlayOneShot(trampolineSound);
         }
     }
 }
