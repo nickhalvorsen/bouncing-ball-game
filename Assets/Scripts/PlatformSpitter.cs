@@ -1,41 +1,62 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatformSpitter : MonoBehaviour
 {
-
-    public GameObject prefab; 
-    private Vector3 spawnPoint = new Vector3(0, 0, 15);
-    private float spawnHorizontalVariance = 20f;
-    private float spawnVerticalVariance = 0.1f;
+    public GameObject platformPrefab;
+    public GameObject trampolinePrefab;
+    public float y; // horizontal spawn point
+    public float spawnHorizontalVariance = 20f;
+    public float spawnVerticalVariance = 0.2f;
     public float spawnRate = 2f; // Number of spawns per second
+    public bool spawnTrampoline = false;
+    private float trampolineSpawnSecondsBetween = 4; 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnRoutine());
+        StartCoroutine(SpawnPlatformRoutine());
+        StartCoroutine(SpawnTrampolineRoutine());
     }
 
 
-    private Vector3 getRandomSpawnPosition()
+    private Vector3 getRandomPlatformSpawnPosition()
     {
-        var spawnXOffset = Random.Range(-1 * spawnHorizontalVariance, spawnHorizontalVariance);
-        var spawnYOffset = Random.Range(-1 * spawnVerticalVariance, spawnVerticalVariance);
+        var spawnPoint = new Vector3(0, y, 15);
+        var spawnXOffset = UnityEngine.Random.Range(-1 * spawnHorizontalVariance, spawnHorizontalVariance);
+        var spawnYOffset = UnityEngine.Random.Range(-1 * spawnVerticalVariance, spawnVerticalVariance);
+        return spawnPoint + new Vector3(spawnXOffset, spawnYOffset, 0);
+    }
+    private Vector3 getRandomTrampolineSpawnPosition()
+    {
+        // Need a different z offset to get the trampolines to generate at the same z position as platforms.
+        // I have no clue why this is necessary. 
+        var spawnPoint = new Vector3(0, y, 50);
+        var spawnXOffset = UnityEngine.Random.Range(-1 * spawnHorizontalVariance, spawnHorizontalVariance);
+        var spawnYOffset = UnityEngine.Random.Range(-2 * spawnVerticalVariance, 2*spawnVerticalVariance);
         return spawnPoint + new Vector3(spawnXOffset, spawnYOffset, 0);
     }
 
-    IEnumerator SpawnRoutine()
+    IEnumerator SpawnPlatformRoutine()
     {
         // Calculate the delay between spawns
         float delay = 1f / spawnRate;
 
         while (true)
         {
-            Instantiate(prefab, getRandomSpawnPosition(), new Quaternion(0,0,0,0));
-
+            Instantiate(platformPrefab, getRandomPlatformSpawnPosition(), new Quaternion(0, 0, 0, 0));
             yield return new WaitForSeconds(delay);
+        }
+    }
+
+    IEnumerator SpawnTrampolineRoutine()
+    {
+
+        while (true)
+        {
+            Instantiate(trampolinePrefab, getRandomTrampolineSpawnPosition(), new Quaternion(0, 0, 0, 0));
+            yield return new WaitForSeconds(trampolineSpawnSecondsBetween);
         }
     }
 

@@ -7,7 +7,7 @@ using static UnityEngine.ParticleSystem;
 public class BouncingBoy : MonoBehaviour
 {
     // vertical movement
-    private const float gravity = -10;
+    private const float gravity = -11;
     private const float bounceFactor = 10;
     private const float diveSpeed = -20;
     private const float playerGlideThreshold = -.5f; // if the player's downward velocity is stronger than this, then they may glide
@@ -112,7 +112,12 @@ public class BouncingBoy : MonoBehaviour
             var rb = GetComponent<Rigidbody>();
             rb.velocity = new Vector3(rb.velocity.x, bounceFactor, rb.velocity.z);
 
+            audioSource.PlayOneShot(collisionSound);
+        }
 
+        if (col.gameObject.tag == "trampoline")
+        {
+            GameManager.Instance.TrampolineHit();
             audioSource.PlayOneShot(collisionSound);
         }
     }
