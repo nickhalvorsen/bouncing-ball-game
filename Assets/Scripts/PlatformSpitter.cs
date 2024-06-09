@@ -7,7 +7,7 @@ public class PlatformSpitter : MonoBehaviour
     public GameObject trampolinePrefab;
     public float y; // horizontal spawn point
     public float spawnHorizontalVariance = 20f;
-    public float spawnVerticalVariance = 0.2f;
+    public float spawnVerticalVariance = .5f;
     public float spawnRate = 2f; // Number of spawns per second
     public bool spawnTrampoline = false;
     private float trampolineSpawnSecondsBetween = 4; 
@@ -24,8 +24,8 @@ public class PlatformSpitter : MonoBehaviour
     private Vector3 getRandomPlatformSpawnPosition()
     {
         var spawnPoint = new Vector3(0, y, 15);
-        var spawnXOffset = UnityEngine.Random.Range(-1 * spawnHorizontalVariance, spawnHorizontalVariance);
-        var spawnYOffset = UnityEngine.Random.Range(-1 * spawnVerticalVariance, spawnVerticalVariance);
+        var spawnXOffset = Random.Range(-1 * spawnHorizontalVariance, spawnHorizontalVariance);
+        var spawnYOffset = Random.Range(-1 * spawnVerticalVariance, spawnVerticalVariance);
         return spawnPoint + new Vector3(spawnXOffset, spawnYOffset, 0);
     }
     private Vector3 getRandomTrampolineSpawnPosition()
@@ -33,8 +33,8 @@ public class PlatformSpitter : MonoBehaviour
         // Need a different z offset to get the trampolines to generate at the same z position as platforms.
         // I have no clue why this is necessary. 
         var spawnPoint = new Vector3(0, y, 50);
-        var spawnXOffset = UnityEngine.Random.Range(-1 * spawnHorizontalVariance, spawnHorizontalVariance);
-        var spawnYOffset = UnityEngine.Random.Range(-2 * spawnVerticalVariance, 2*spawnVerticalVariance);
+        var spawnXOffset = Random.Range(-1 * spawnHorizontalVariance, spawnHorizontalVariance);
+        var spawnYOffset = Random.Range(-2 * spawnVerticalVariance, 2*spawnVerticalVariance);
         return spawnPoint + new Vector3(spawnXOffset, spawnYOffset, 0);
     }
 
@@ -52,7 +52,6 @@ public class PlatformSpitter : MonoBehaviour
 
     IEnumerator SpawnTrampolineRoutine()
     {
-
         while (true)
         {
             Instantiate(trampolinePrefab, getRandomTrampolineSpawnPosition(), new Quaternion(0, 0, 0, 0));

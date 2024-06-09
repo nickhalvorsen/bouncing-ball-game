@@ -23,8 +23,9 @@ public class PropelToNextLevel : MonoBehaviour
     {
         if (isPropelling)
         {
+            // TODO: this is sometimes triggered the instant the ball touches the tramp
             // Checking if velocity < 0 doesn't yield the proper result. Needs to be < -0.1.
-            if (rb.velocity.y < -0.1)
+            if (rb.velocity.y < -0.2)
             {
                 Debug.Log("Propel deactivated, rb velocity y is " + rb.velocity.y);
                 GetComponent<Collider>().enabled = true;
@@ -37,15 +38,15 @@ public class PropelToNextLevel : MonoBehaviour
     {
         GetComponent<Collider>().enabled = false;
         isPropelling = true;
-        rb.velocity = Vector3.zero;
         PropelToHeight(targetHeight);
     }
 
     private void PropelToHeight(float targetHeight)
     {
-        float initialVelocity = CalculateInitialVelocity(targetHeight, Physics.gravity.y);
+        float initialVelocity = CalculateInitialVelocity(targetHeight, BouncingBoy.gravity);
         float force = CalculatePropellingForce(rb.mass, initialVelocity);
 
+        rb.velocity = Vector3.zero;
         rb.AddForce(Vector3.up * force, ForceMode.Impulse);
     }
 

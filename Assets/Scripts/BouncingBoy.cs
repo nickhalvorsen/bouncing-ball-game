@@ -7,7 +7,7 @@ using static UnityEngine.ParticleSystem;
 public class BouncingBoy : MonoBehaviour
 {
     // vertical movement
-    private const float gravity = -11;
+    public const float gravity = -11;
     private const float bounceFactor = 10;
     private const float diveSpeed = -20;
     private const float playerGlideThreshold = -.5f; // if the player's downward velocity is stronger than this, then they may glide
