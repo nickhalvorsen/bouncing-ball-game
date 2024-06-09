@@ -110,7 +110,6 @@ public class BouncingBoy : MonoBehaviour
     {
         if (col.gameObject.tag == "platform")
         {
-            var rb = GetComponent<Rigidbody>();
             rb.velocity = new Vector3(rb.velocity.x, bounceFactor, rb.velocity.z);
 
             audioSource.PlayOneShot(collisionSound);
@@ -120,6 +119,9 @@ public class BouncingBoy : MonoBehaviour
         {
             GameManager.Instance.TrampolineHit();
             audioSource.PlayOneShot(trampolineSound);
+            // This velocity will be overridden by the setvelocity in gamemanager, but this is useful for one frame to prevent a double collision
+            // (prevent the sound playing on multiple consecutive frames)
+            rb.velocity = new Vector3(rb.velocity.x, bounceFactor, rb.velocity.z);
         }
     }
 }
