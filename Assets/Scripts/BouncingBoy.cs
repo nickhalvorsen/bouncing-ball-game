@@ -22,6 +22,7 @@ public class BouncingBoy : MonoBehaviour
     private Vector3 targetVelocity;
     public AudioClip collisionSound;
     public AudioClip trampolineSound;
+    public AudioClip pickupSound;
     private AudioSource audioSource;
     private ParticleSystem particles;
 
@@ -122,6 +123,14 @@ public class BouncingBoy : MonoBehaviour
             // This velocity will be overridden by the setvelocity in gamemanager, but this is useful for one frame to prevent a double collision
             // (prevent the sound playing on multiple consecutive frames)
             rb.velocity = new Vector3(rb.velocity.x, bounceFactor, rb.velocity.z);
+        }
+
+        if (col.gameObject.tag == "pickup")
+        {
+            //GameManager.Instance.PickedupPickup();
+            audioSource.PlayOneShot(pickupSound);
+            Debug.Log("Pickeud up");
+            col.gameObject.SetActive(false);
         }
     }
 }

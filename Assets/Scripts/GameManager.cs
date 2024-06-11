@@ -21,27 +21,24 @@ public class GameManager : MonoBehaviour
     private int _currentLevel = 0;
     public List<Level> _levels = new List<Level>()
     {
-        new Level(0),
-        new Level(30),
-        new Level(60),
-        new Level(90)
+        new Level(0, 45),
+        new Level(30, 45),
+        new Level(60, 45),
+        new Level(90, 45)
     };
 
     public GameObject player;
     public GameObject mainCamera;
-    public GameObject PlatformSpitter0;
-    public GameObject PlatformSpitter1;
-    public GameObject PlatformSpitter2;
-    public GameObject PlatformSpitter3;
+    public GameObject FirstLevelSpawners;
     private bool levelSwitchCooldown = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Start() 
     {
-        PlatformSpitter0.GetComponent<PlatformSpitter>().y = _levels[0].height;
-        PlatformSpitter1.GetComponent<PlatformSpitter>().y = _levels[1].height;
-        PlatformSpitter2.GetComponent<PlatformSpitter>().y = _levels[2].height;
-        PlatformSpitter3.GetComponent<PlatformSpitter>().y = _levels[3].height;
+        var pos = FirstLevelSpawners.transform.position;
+        FirstLevelSpawners.transform.position = new Vector3(pos.x, _levels[0].height, _levels[0].z);
+        FirstLevelSpawners.GetComponents<ObjectSpitter>()[0].isSpawning = true;
+        FirstLevelSpawners.GetComponents<ObjectSpitter>()[1].isSpawning = false;
     }
 
     // Update is called once per frame
@@ -103,10 +100,11 @@ public class GameManager : MonoBehaviour
 public class Level
 {
     public readonly float height;
-    public bool completed = false;
+    public readonly float z;
 
-    public Level(float height)
+    public Level(float height, float z)
     {
         this.height = height;
+        this.z = z;
     }
 }
