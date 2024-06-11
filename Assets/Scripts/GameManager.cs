@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         FirstLevelSpawners.transform.position = new Vector3(pos.x, _levels[0].height, _levels[0].z);
         FirstLevelSpawners.GetComponents<ObjectSpitter>()[0].isSpawning = true;
         FirstLevelSpawners.GetComponents<ObjectSpitter>()[1].isSpawning = false;
+        FirstLevelSpawners.GetComponents<ObjectSpitter>()[2].isSpawning = true;
     }
 
     // Update is called once per frame
