@@ -19,13 +19,12 @@ public class ObjectSpitter : MonoBehaviour
     }
 
 
-    private Vector3 getRandomSpawnPosition()
+    private Vector3 getRandomSpawnPosition(float y, float z)
     {
-        var position = transform.position;
-        var spawnPoint = new Vector3(0, position.y + yOffset, position.z + zOffset);
-        var spawnXOffset = Random.Range(-1 * spawnHorizontalVariance, spawnHorizontalVariance);
-        var spawnYOffset = Random.Range(-1 * spawnVerticalVariance, spawnVerticalVariance);
-        return spawnPoint + new Vector3(spawnXOffset, spawnYOffset, 0);
+        var spawnPoint = new Vector3(0, y, z);
+        var spawnXRandomOffset = Random.Range(-1 * spawnHorizontalVariance, spawnHorizontalVariance);
+        var spawnYRandomOffset = Random.Range(-1 * spawnVerticalVariance, spawnVerticalVariance);
+        return spawnPoint + new Vector3(spawnXRandomOffset, spawnYRandomOffset, 0);
     }
 
     IEnumerator SpawnPrefabRoutine()
@@ -35,10 +34,27 @@ public class ObjectSpitter : MonoBehaviour
 
         while (true)
         {
+            var position = transform.position;
             if (isSpawning)
-                Instantiate(prefabToSpit, getRandomSpawnPosition(), new Quaternion(0, 0, 0, 0));
+                Instantiate(prefabToSpit, getRandomSpawnPosition(position.y + yOffset, position.z + zOffset), new Quaternion(0, 0, 0, 0));
 
             yield return new WaitForSeconds(delay);
+        }
+    }
+
+    // Used to spawn platforms at the beginning of the game
+    public void SpawnToFillArea()
+    {
+        var objectSpeed = 5f;
+        var distanceCovered = 0f;
+
+        var endZ = transform.position.z + zOffset;
+        var position = transform.position;
+
+        while (distanceCovered < endZ)
+        {
+            Instantiate(prefabToSpit, getRandomSpawnPosition(position.y + yOffset, endZ - distanceCovered), new Quaternion(0, 0, 0, 0));
+            distanceCovered += objectSpeed * (1 / spawnRate);
         }
     }
 

@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
         FirstLevelSpawners.GetComponents<ObjectSpitter>()[0].isSpawning = true;
         FirstLevelSpawners.GetComponents<ObjectSpitter>()[1].isSpawning = false;
         FirstLevelSpawners.GetComponents<ObjectSpitter>()[2].isSpawning = true;
+        FirstLevelSpawners.GetComponents<ObjectSpitter>()[0].SpawnToFillArea();
     }
 
     // Update is called once per frame
