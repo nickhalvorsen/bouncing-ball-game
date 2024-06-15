@@ -449,7 +449,7 @@ MonoBehaviour:
   prefabToSpit: {fileID: 6537927625605148464, guid: 997b380d072695148a1e3c90ab3ff592, type: 3}
   yOffset: 1
   zOffset: 0
-  spawnHorizontalVariance: 18
+  spawnHorizontalVariance: 16
   spawnVerticalVariance: 0
   spawnRate: 0.1
   isSpawning: 0
@@ -468,7 +468,7 @@ MonoBehaviour:
   prefabToSpit: {fileID: 8347528626955429736, guid: 9c1ece4d140deef4ba1e09c7e3aa1ef4, type: 3}
   yOffset: 0
   zOffset: 0
-  spawnHorizontalVariance: 18
+  spawnHorizontalVariance: 16
   spawnVerticalVariance: 0.5
   spawnRate: 3
   isSpawning: 0
@@ -514,7 +514,7 @@ MonoBehaviour:
   prefabToSpit: {fileID: 8739128445486695343, guid: 800a5fce0c81e4d4ba2bc04a34eebee5, type: 3}
   yOffset: 5
   zOffset: 0
-  spawnHorizontalVariance: 18
+  spawnHorizontalVariance: 16
   spawnVerticalVariance: 0.5
   spawnRate: 0.5
   isSpawning: 0
