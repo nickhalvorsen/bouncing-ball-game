@@ -50,7 +50,6 @@ public class BouncingBoy : MonoBehaviour
         // apply vertical movement
         rb.velocity += new Vector3(0, gravity * Time.deltaTime, 0);
 
-
         var isGliding = Input.GetKey(KeyCode.UpArrow) && rb.velocity.y < playerGlideThreshold;
         var isDiving = Input.GetKey(KeyCode.DownArrow) && rb.velocity.y < bounceFactor * .5;
 
@@ -77,11 +76,14 @@ public class BouncingBoy : MonoBehaviour
                 particles.Play();
             }
         }
-        
+
         if (!isDiving && !isGliding)
         {
             particles.Stop();
         }
+
+        // Prevent the player from being pushed off position by collisions
+        rb.position = new Vector3(rb.position.x, rb.position.y, 0);
     }
 
     void FixedUpdate()
